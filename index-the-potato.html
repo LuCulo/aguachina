@@ -10,9 +10,73 @@
 <body>
   <div id="world-map" style="width: 600px; height: 400px"></div>
   <script>
+
+colors = {};
+
+colors['CA'] = '#A4D886';
+colors['RU'] = '#FCECA2';
+colors['US'] = '#F9573B';
+colors['JP'] = '#87CEEB';
+colors['jp'] = '#34BD0E';
+colors['au'] = '#BCC7FC';
+colors['kz'] = '#D4624E';
+colors['de'] = '#34BD0E';
+
+    // $('#world-map').vectorMap({
+    //   colors: colors,
+    //   hoverOpacity: 0.7, // opacity for :hover
+    //   hoverColor: false,
+    //   map: 'world_mill'
+    // });
+
     $(function(){
-      $('#world-map').vectorMap({map: 'world_mill'});
+      $('#world-map').vectorMap({
+        map: 'world_mill',
+            series: {
+            regions: [{
+                attribute: 'fill'
+            }]
+        }
+      });
+      // map.series.regions[0].setValues(colors);
+    var map = $('#world-map').vectorMap('get', 'mapObject');
+    map.series.regions[0].setValues(colors);
     });
+    
+    // $('#world-map').vectorMap({
+    // map: 'world_mill',
+    // colors:{
+    //     'BR': '#4E7387',
+    //     'US':'#345678'
+
+    // },
+    // series: {
+    //   regions: 
+    //   [{
+    //     attribute: 'fill'
+    //   }]
+    // }
+    // });
+
+    // (function() {
+    // var myCustomColors = {
+    //     'BR': '#4E7387',
+    //     'US': '#333333'
+    // };
+
+    // map = new jvm.WorldMap({
+    //     map: 'world_mill',
+    //     container: $('#world-map'),
+    //     backgroundColor: '#eff7ff',
+    //     series: {
+    //         regions: [{
+    //             attribute: 'fill'
+    //         }]
+    //     }
+    // });
+
+    // map.series.regions[0].setValues(myCustomColors);
+    // })();
   </script>
 </body>
 </html>
